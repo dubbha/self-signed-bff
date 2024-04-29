@@ -2,7 +2,7 @@
   "private": true,
   "scripts": {
     "build": "next build",
-    "dev": "cross-env NODE_EXTRA_CA_CERTS=\"$HOME/src/github.com/dubbha/self-signed/bff/certs/root.pem\" next dev",
+    "dev": "cross-env NODE_EXTRA_CA_CERTS=\"../bff/certs/root.pem\" next dev",
     "start": "next start"
   },
   "dependencies": {
