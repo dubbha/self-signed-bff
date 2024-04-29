@@ -1,0 +1,6 @@
+V	270429142731Z		00	unknown	/C=US/CN=Test Root CA
+V	260429142750Z		01	unknown	/C=US/CN=Test Intermediate CA
+V	270429182410Z		02	unknown	/C=US/CN=Test Root CA
+V	260429182431Z		03	unknown	/C=US/CN=Test Intermediate CA
+V	270429191059Z		04	unknown	/C=US/CN=ca.local
+V	260429191112Z		05	unknown	/C=US/CN=intermediate.local

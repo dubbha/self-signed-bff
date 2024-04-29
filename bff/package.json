@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "start": "NODE_EXTRA_CA_CERTS=\"$HOME/src/github.com/dubbha/self-signed/bff/certs/chain.pem\" node index"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "dotenv": "^8.2.0"
+  }
+}
+  
