@@ -16,22 +16,3 @@ openssl verify -x509_strict -CAfile root.pem -untrusted intermediate.pem leaf.pe
 openssl verify -CAfile <(cat intermediate.pem root.pem) leaf.pem
 openssl verify -CAfile <(cat root.pem intermediate.pem) leaf.pem
 # leaf.pem: OK
-
-
-# https://security.stackexchange.com/questions/268628/how-to-practice-making-self-signed-certificates-with-intermediate-ca
-
-# make certs for root ca
-openssl genrsa -out root.key 2048
-openssl req -x509 -sha256 -nodes -extensions v3_ca -key root.key -subj "/C=CA/ST=ON/O=HelloWorld/CN=root.example.com" -days 3650 -out root.crt -config openssl.conf
-
-# make certs for intermediate ca
-openssl genrsa -out intermediate.key 2048
-openssl req -new -sha256 -nodes -key intermediate.key -subj "/C=CA/ST=ON/O=HelloWorld/CN=intermediate.example.com" -out intermediate.csr
-openssl x509 -req -extensions v3_ca -in intermediate.csr -CA root.crt -CAkey root.key -CAcreateserial -out intermediate.crt -days 500 -sha256
-
-# make certs for end user
-openssl genrsa -out enduser.key 2048
-openssl req -new -sha256 -nodes -key enduser.key -subj "/C=CA/ST=ON/O=HelloWorld/CN=enduser.example.com" -out enduser.csr
-openssl x509 -req -in enduser.csr -CA intermediate.crt -CAkey intermediate.key -CAcreateserial -out enduser.crt -days 500 -sha256
-
-openssl x509 -req -extensions v3_ca -in intermediate.csr -CA root.crt -CAkey root.key -CAcreateserial -out intermediate.crt -days 500 -sha256
